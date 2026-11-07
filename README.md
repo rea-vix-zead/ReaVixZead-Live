@@ -4,7 +4,7 @@
 
 - `index.html`：直播首頁。
 - `about.html`：個人介紹與互動小約定。
-- `community.html`：兩個 Discord 的區分、投稿入口與社群連結。
+- `community.html`：主要 Discord、直播朋友共用社群、投稿入口與社群連結。
 - `support.html`：第三方支持方式與合作聯絡。
 
 公開網站：https://rea-vix-zead.github.io/ReaVixZead-Live/
@@ -24,4 +24,5 @@ GitHub Pages 使用 `main` 分支的根目錄。`.nojekyll` 保留靜態原始�
 
 網站不宣稱即時開台狀態或固定直播時段；直播安排以 Twitch 為準。
 投稿目前導向 LINKGOODS 原有表單入口，本站不收集投稿資料。
-個人 Discord 為付費會員福利，共用 Discord 為與朋友共同經營的交流社群。
+主要 Discord：https://discord.gg/UBVjfp7vX5 。首頁的 Discord 入口統一指向此處。
+直播朋友共用社群：https://discord.gg/FZmGSzxWY2 ，可以和其他直播朋友聊天、交流與一起玩。

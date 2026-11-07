@@ -8,8 +8,8 @@ BASE = 'https://rea-vix-zead.github.io/ReaVixZead-Live/'
 LINKS = {
     'twitch': 'https://www.twitch.tv/rea_vix_zead',
     'youtube': 'https://www.youtube.com/@雷貝斯傑德_Rea_Vix_Zead',
-    'discord': 'https://discord.gg/FZmGSzxWY2',
-    'members': 'https://discord.gg/UBVjfp7vX5',
+    'discord': 'https://discord.gg/UBVjfp7vX5',
+    'shared': 'https://discord.gg/FZmGSzxWY2',
     'linkgoods': 'https://linkgoods.com/reavixzead',
     'instagram': 'https://www.instagram.com/rea_vix_zead/',
     'threads': 'https://www.threads.com/@rea_vix_zead',
@@ -72,7 +72,7 @@ home=f'''
 <section class="platform-rail container" aria-label="常用平台"><span class="rail-label">FIND ME HERE <span>↘</span></span>{ext('twitch','TWITCH','rail-link','play')}{ext('youtube','YOUTUBE','rail-link','play')}{ext('discord','DISCORD','rail-link','chat')}</section>
 <section class="section container"><div class="section-heading"><div><p class="eyebrow">GOOD GAMES, BETTER COMPANY</p><h2>不只看遊戲，<br>也一起創造好玩的時刻。</h2></div><a class="text-link" href="about.html">關於這個頻道 {icon()}</a></div>
 <div class="experience-grid"><article class="experience"><span class="section-number">01 / PLAY</span><h3>遊戲時間</h3><p>跟著我一起進入遊戲，看看這次會遇上什麼有趣的事情。</p></article><article class="experience"><span class="section-number">02 / TOGETHER</span><h3>一起玩才有趣</h3><p>喜歡和觀眾一起玩。能否一起加入，就依當次直播與遊戲安排。</p></article><article class="experience"><span class="section-number">03 / HANG OUT</span><h3>來坐坐、聊聊天</h3><p>不用想好話題，也不必每次都出聲。自在地看台，就是一種陪伴。</p></article></div></section>
-<section class="section container"><div class="community-feature"><div><p class="eyebrow">THE PARTY DOESN’T END HERE</p><h2>下播之後，<br><span>我們還能在這裡碰面。</span></h2><p>共用 Discord 社群、會員專屬社群，還有留給故事與提問的入口。選一個你喜歡的方式，繼續這段連結。</p>{btn('community.html','找到你的社群入口')}</div><div class="chat-art" aria-hidden="true"><span class="chat-art-star">✦</span><div class="bubble bubble-a">有人要一起玩嗎？<small>GAME LOBBY / READY</small></div><div class="bubble bubble-b">來了，等我一下！<span>✧</span></div><div class="chat-art-label">GOOD COMPANY. GOOD TIMES.</div></div></div></section>
+<section class="section container"><div class="community-feature"><div><p class="eyebrow">THE PARTY DOESN’T END HERE</p><h2>下播之後，<br><span>我們還能在這裡碰面。</span></h2><p>我的主要 Discord、與其他直播朋友共用的社群，還有留給故事與提問的入口。選一個你喜歡的方式，繼續這段連結。</p>{btn('community.html','找到你的社群入口')}</div><div class="chat-art" aria-hidden="true"><span class="chat-art-star">✦</span><div class="bubble bubble-a">有人要一起玩嗎？<small>GAME LOBBY / READY</small></div><div class="bubble bubble-b">來了，等我一下！<span>✧</span></div><div class="chat-art-label">GOOD COMPANY. GOOD TIMES.</div></div></div></section>
 {contact_strip()}'''
 
 about=f'''{page_head('BEHIND THE SCREEN','嗨，我是<br><span>雷貝斯杰德。</span>','Rea_Vix_Zead，一個喜歡遊戲，也喜歡和觀眾一起玩的 VTuber。')}
@@ -81,7 +81,7 @@ about=f'''{page_head('BEHIND THE SCREEN','嗨，我是<br><span>雷貝斯杰德�
 
 socials=''.join(ext(k,label,'social-link') for k,label in [('twitch','Twitch'),('youtube','YouTube'),('instagram','Instagram'),('threads','Threads'),('facebook','Facebook'),('x','X'),('linkgoods','LINKGOODS')])
 community=f'''{page_head('FIND YOUR PARTY','一起上線，<br><span>也一起聊天。</span>','直播之外，這裡還有讓你認識大家、分享故事，以及留下問題的入口。')}
-<section class="section container"><div class="section-heading"><div><p class="eyebrow">DISCORD COMMUNITIES</p><h2>兩個社群，不同的相處方式。</h2></div></div><div class="community-grid"><article class="community-card"><div class="card-icon">{icon('chat')}</div><span class="pill">共用交流社群</span><h3>和大家一起，<br>找到同一個頻道。</h3><p>由我和朋友共同經營的 Discord 社群，提供大家互動、交流的空間。歡迎先看看伺服器介紹與規則。</p>{ext('discord','前往共用 Discord','button')}</article><article class="community-card members-card"><div class="card-icon">{icon('star')}</div><span class="pill">訂閱會員福利</span><h3>留給會員的，<br>專屬社群空間。</h3><p>個人 Discord 是付費會員的專屬福利入口。會員身分、使用資格與相關說明，請依頻道及伺服器目前公告確認。</p>{ext('members','查看個人 Discord 入口','button button-secondary')}</article></div></section>
+<section class="section container"><div class="section-heading"><div><p class="eyebrow">DISCORD COMMUNITIES</p><h2>兩個社群，不同的相處方式。</h2></div></div><div class="community-grid"><article class="community-card"><div class="card-icon">{icon('chat')}</div><span class="pill">我的主要 Discord</span><h3>平常互動，<br>就來這裡找我。</h3><p>這是我的主要 Discord。想和我聊天、交流或一起玩，可以先從這裡開始；進入後請先閱讀社群介紹與規則。</p>{ext('discord','前往主要 Discord','button')}</article><article class="community-card members-card"><div class="card-icon">{icon('star')}</div><span class="pill">直播朋友共用社群</span><h3>和我、直播朋友們，<br>一起交流與玩遊戲。</h3><p>這是和其他直播朋友共用的 Discord，除了找我，也可以和大家聊天、交流，或揪團一起玩。加入後先看看社群規則，再一起參與互動。</p>{ext('shared','前往直播朋友共用 Discord','button button-secondary')}</article></div></section>
 <section class="section container"><div class="story-panel"><div><p class="eyebrow">YOUR STORY, YOUR WAY</p><h2>有故事想說？<br><span>我在這裡聽。</span></h2><p>故事、問題、建議，或只是想分享一件小事，都可以從 LINKGOODS 的表單入口開始。</p>{ext('linkgoods','前往投稿與回饋入口','button')}</div><div class="story-notes"><div><span>01</span><h3>想收到個人回覆</h3><p>填寫 E-mail，可透過不公開的個人回覆方式聯絡。</p></div><div><span>02</span><h3>想用純匿名方式分享</h3><p>不填 E-mail，依表單說明以匿名公開方式處理；請避開你或他人的敏感資訊。</p></div></div></div></section>
 <section class="section container"><div class="section-heading"><div><p class="eyebrow">AROUND THE INTERNET</p><h2>在其他地方找到我</h2></div></div><div class="social-grid">{socials}</div></section>'''
 
@@ -93,7 +93,7 @@ support=f'''{page_head('THANKS FOR BEING HERE','有你在，<br><span>就是很�
 pages = {
     'index.html': ('直播個人網站','遊戲、聊天，還有一起玩的你。雷貝斯杰德 Rea_Vix_Zead 的 Twitch、社群與投稿入口。',home),
     'about.html': ('認識杰德','認識 VTuber 雷貝斯杰德，以及直播互動的小約定。',about),
-    'community.html': ('社群與投稿','找到共用 Discord、會員社群、故事投稿與其他社群平台。',community),
+    'community.html': ('社群與投稿','找到我的主要 Discord、與其他直播朋友共用的社群，以及故事投稿與其他平台入口。',community),
     'support.html': ('支持與合作','Twitch、第三方贊助、合作聯動與電子郵件聯絡方式。',support),
 }
 for filename,(title,description,body) in pages.items():
