@@ -14,6 +14,51 @@
 @media(max-width:360px){.hero-name>span{display:block;margin-left:0}.portrait-stage{height:370px}.hero-actions{display:grid;grid-template-columns:1fr}.stage-caption{flex-direction:column}.social-grid{grid-template-columns:1fr}.bubble{font-size:.8rem}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.button{transition:none}.button:hover{transform:none}}
 
-.support-card .text-link:has(.support-logo) { gap: 8px; }
-.support-logo { width: 68px; height: 28px; object-fit: contain; padding: 3px 5px; background: #fff; border-radius: 5px; }
-.referral-note { color: var(--muted); font-size: .9rem; }
+/* Support page */
+.support-page {
+  background:
+    radial-gradient(ellipse at 88% 4%, #D9006C3d, transparent 33rem),
+    radial-gradient(ellipse at 12% 24%, #75007555, transparent 37rem),
+    radial-gradient(ellipse at 85% 78%, #AE000033, transparent 36rem),
+    linear-gradient(158deg, #600030, #241124 42%, #35142f 70%, #190e19);
+}
+.support-page .page-heading { padding-bottom: clamp(28px, 5vw, 58px); }
+.support-page main > .section { padding-block: clamp(26px, 4vw, 46px); }
+.support-page main > .section + .section { border-top: 1px solid #6C3365; }
+.support-page .section-heading { margin-bottom: 22px; }
+.support-page .section-heading h2 { margin-bottom: 0; }
+.support-page .section-heading .eyebrow { margin-bottom: 8px; }
+.support-page .support-grid { gap: 16px; }
+.support-page .support-card {
+  padding: clamp(18px, 2.5vw, 26px);
+  border-color: #6C3365;
+  background: #211323;
+}
+.support-page .support-card h3 { margin-bottom: 8px; font-size: 1.2rem; }
+.support-page .support-card p { margin-bottom: 18px; }
+.support-page .support-card .card-icon { margin-bottom: 14px; }
+.support-page .support-card .text-link {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr) 16px;
+  gap: 10px;
+  width: 100%;
+  padding: 7px 10px;
+  border: 1px solid #6C3365;
+  border-radius: 8px;
+  background: #301630;
+}
+.support-page .support-card .text-link:not(:has(.support-logo)) {
+  grid-template-columns: minmax(0, 1fr) 16px;
+}
+.support-page .support-card .text-link:hover { border-color: #e85b9f; }
+.support-page .support-card .text-link svg { width: 16px; height: 16px; }
+.support-logo {
+  width: 64px;
+  height: 28px;
+  object-fit: contain;
+  padding: 3px 5px;
+  background: #fff;
+  border-radius: 5px;
+}
+.support-page .referral-note { margin: 8px 0 0; color: var(--muted); font-size: .9rem; }
+.support-page .small-note { border: 0; padding-top: 0; }
