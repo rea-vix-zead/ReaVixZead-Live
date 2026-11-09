@@ -112,40 +112,62 @@ main > .section + .section { border-top: 1px solid var(--line); }
 
 
 
-/* Raven emotes stay inside the gutters beside the content. */
+/* Fade the larger emotes where the artwork approaches the content. */
 #main {
   position: relative;
-  --emote-gutter: clamp(20px, (100% - var(--width)) / 2, 144px);
+  isolation: isolate;
+  --emote-gutter: max(32px, (100vw - var(--width)) / 2);
+  --emote-strip: clamp(80px, var(--emote-gutter) + 22px, 172px);
 }
 
 #main::before,
 #main::after {
   content: "";
   position: absolute;
+  z-index: -1;
   inset-block: 0;
-  width: var(--emote-gutter);
+  width: var(--emote-strip);
   pointer-events: none;
   background-repeat: no-repeat;
-  background-size: min(84%, 108px) auto, min(66%, 88px) auto;
+  background-size: min(94%, 144px) auto, min(78%, 120px) auto;
   filter: saturate(.55);
   opacity: .24;
+  mask-image: linear-gradient(
+    var(--emote-fade-direction),
+    #000 max(0px, var(--emote-gutter) - 8px),
+    transparent calc(var(--emote-gutter) + 18px)
+  );
 }
 
 #main::before {
   left: 0;
+  --emote-fade-direction: to right;
   background-image: url("raven-live.png"), url("raven-watch.png");
-  background-position: center 8%, center 64%;
+  background-position: left 8%, left 64%;
 }
 
 #main::after {
   right: 0;
+  --emote-fade-direction: to left;
   background-image: url("raven-cheer.png"), url("raven-celebrate.png");
-  background-position: center 22%, center 84%;
+  background-position: right 22%, right 84%;
+}
+
+@media (max-width: 800px) {
+  #main {
+    --emote-gutter: 24px;
+    --emote-strip: 54px;
+  }
 }
 
 @media (max-width: 600px) {
+  #main {
+    --emote-gutter: 20px;
+    --emote-strip: 44px;
+  }
+
   #main::before,
   #main::after {
-    opacity: .16;
+    opacity: .17;
   }
 }
