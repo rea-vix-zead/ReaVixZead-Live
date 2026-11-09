@@ -80,3 +80,16 @@ main > .section + .section { border-top: 1px solid var(--line); }
 .schedule-note, .stage-coordinate, .rail-label, .chat-art-label, .footer-bottom { color: var(--muted); }
 .community-feature, .contact-box { border-color: var(--line); }
 .stage-caption { border-color: var(--line); }
+
+/* Streaming pages */
+.schedule-shell{border:1px solid var(--line);border-radius:20px;background:linear-gradient(145deg,#35142f,#210e1e);overflow:hidden;box-shadow:0 18px 55px #11000d33}
+.embed-heading{padding:30px 32px;display:flex;align-items:center;justify-content:space-between;gap:20px}.embed-heading h2{font-size:1.65rem;margin:0}.embed-heading .eyebrow{margin-bottom:8px}.embed-heading p:not(.eyebrow){color:var(--muted);margin:8px 0 0;font-size:.9rem}.embed-foot{padding:22px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px}.embed-foot p{font-size:.85rem;color:var(--muted);margin:0;max-width:650px}.embed-foot a{flex-shrink:0}.calendar-frame{margin:0 16px;background:#fff3fa;border-radius:12px;overflow:hidden;color-scheme:light}.calendar-frame iframe{width:100%;height:620px;display:block;border:0}.twitch-frame{background:#090909}.twitch-frame iframe{width:100%;aspect-ratio:16/9;min-height:300px;border:0;display:block}
+@media(min-width:801px){.nav{gap:16px}.header-watch{display:none}.brand-name{font-size:.83rem}}
+@media(max-width:600px){.embed-heading{padding:24px 20px;align-items:flex-start;flex-direction:column;gap:12px}.embed-foot{padding:20px;align-items:flex-start;flex-direction:column;gap:12px}.calendar-frame{margin:0 8px}.calendar-frame iframe{height:520px}.twitch-frame iframe{min-height:300px}.schedule-shell{border-radius:14px}}
+
+.coupang-carousel{padding:8px 16px;background:#fff3fa;display:flex;justify-content:center;overflow:hidden}.coupang-carousel iframe{max-width:100%;border:0;background:white;display:block}
+
+.campaign-box{padding:24px 12px;text-align:center;border-top:1px solid var(--line)}.campaign-box[hidden]{display:none}.campaign-box iframe{display:block;margin:auto;max-width:100%;border:0}.campaign-box p:last-child{font-size:.75rem;color:var(--muted);margin:12px 0 0}
+
+#coupang-ad{max-width:760px;padding-top:24px}#coupang-ad .embed-heading{padding:20px 24px}#coupang-ad h2{font-size:1.25rem}#coupang-ad .embed-foot{padding:16px 24px}#coupang-ad .embed-foot p{font-size:.72rem}#coupang-ad .campaign-box{padding:16px 12px}#coupang-ad .eyebrow{margin-bottom:6px}
+
