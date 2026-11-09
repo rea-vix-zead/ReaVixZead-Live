@@ -105,3 +105,5 @@ main > .section + .section { border-top: 1px solid var(--line); }
 @media(max-width:600px){.rail-link{margin:5px;padding:5px}.embed-foot .text-link{max-width:100%;white-space:normal}.footer-bottom{gap:12px}.footer-links{gap:10px}}
 @media(prefers-reduced-motion:reduce){.text-link,.button,.social-link{transition:none}}
 
+.daily-deal{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px 22px;padding:18px;border:1px solid #ffadd8;border-radius:10px;background:linear-gradient(110deg,#600030,#750075);max-width:680px;margin:auto}.daily-deal span{font-size:.68rem;letter-spacing:.08em}.daily-deal strong{font-size:1rem}.daily-deal small{font-size:.75rem;text-decoration:underline}.daily-deal:hover{background:#750075;box-shadow:0 0 18px #ffadd822}
+
