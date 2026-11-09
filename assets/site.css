@@ -111,3 +111,41 @@ main > .section + .section { border-top: 1px solid var(--line); }
 .calendar-frame{background:#241120;color-scheme:dark}.calendar-frame iframe{filter:invert(.91) hue-rotate(180deg) saturate(.65) brightness(.96)}
 
 
+
+/* Raven emotes stay inside the gutters beside the content. */
+#main {
+  position: relative;
+  --emote-gutter: clamp(20px, (100% - var(--width)) / 2, 144px);
+}
+
+#main::before,
+#main::after {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  width: var(--emote-gutter);
+  pointer-events: none;
+  background-repeat: no-repeat;
+  background-size: min(84%, 108px) auto, min(66%, 88px) auto;
+  filter: saturate(.55);
+  opacity: .24;
+}
+
+#main::before {
+  left: 0;
+  background-image: url("raven-live.png"), url("raven-watch.png");
+  background-position: center 8%, center 64%;
+}
+
+#main::after {
+  right: 0;
+  background-image: url("raven-cheer.png"), url("raven-celebrate.png");
+  background-position: center 22%, center 84%;
+}
+
+@media (max-width: 600px) {
+  #main::before,
+  #main::after {
+    opacity: .16;
+  }
+}
