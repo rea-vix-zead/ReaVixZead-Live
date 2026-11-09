@@ -93,3 +93,15 @@ main > .section + .section { border-top: 1px solid var(--line); }
 
 #coupang-ad{max-width:760px;padding-top:24px}#coupang-ad .embed-heading{padding:20px 24px}#coupang-ad h2{font-size:1.25rem}#coupang-ad .embed-foot{padding:16px 24px}#coupang-ad .embed-foot p{font-size:.72rem}#coupang-ad .campaign-box{padding:16px 12px}#coupang-ad .eyebrow{margin-bottom:6px}
 
+/* Clear clickable surfaces */
+.text-link{padding:9px 14px;border:1px solid var(--line);border-radius:8px;background:#ffadd80a;gap:12px;transition:background .18s,border-color .18s,box-shadow .18s}
+.text-link:hover{background:#ffadd81c;border-color:var(--purple);box-shadow:0 3px 15px #0002}
+.nav>a{border:1px solid #6c336577;border-radius:7px;padding:8px 10px;background:#ffadd805;line-height:1.6}
+.nav>a:hover,.nav>a[aria-current]{border-color:var(--purple);background:#ffadd815}.nav>a[aria-current]::after{display:none}
+.rail-link{border:1px solid var(--line);border-radius:8px;margin:8px;background:#ffadd806}.rail-link:hover,.social-link:hover{background:#ffadd817;border-color:var(--purple)}
+.footer-links a,.footer-bottom>a{padding:6px 10px;border:1px solid #6c336580;border-radius:6px}.footer-links{gap:12px}.footer-bottom>a:hover{border-color:var(--purple);background:#ffadd810}
+.schedule-note a{text-decoration:underline;text-underline-offset:4px}.button,.social-link{transition:background .18s,border-color .18s,box-shadow .18s}.button:hover,.social-link:hover{box-shadow:0 4px 18px #0003}
+@media(min-width:801px){.nav{gap:8px}.nav>a{font-size:.78rem;padding:8px}.header-inner{gap:16px}}
+@media(max-width:600px){.rail-link{margin:5px;padding:5px}.embed-foot .text-link{max-width:100%;white-space:normal}.footer-bottom{gap:12px}.footer-links{gap:10px}}
+@media(prefers-reduced-motion:reduce){.text-link,.button,.social-link{transition:none}}
+
