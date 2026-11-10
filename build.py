@@ -48,6 +48,18 @@ def header(page):
     <nav class="nav" id="site-nav" aria-label="主要導覽">{nav}</nav>
     {ext('twitch','前往 Twitch','header-watch','play')}</div></header>'''
 
+MUSIC_STYLESHEET = '<link rel="stylesheet" href="assets/music.css">'
+MUSIC_PLAYER = '''
+<div class="site-music" data-site-music hidden>
+  <audio src="assets/stone-creek-lullaby.mp3" preload="none" loop></audio>
+  <button type="button" class="button button-secondary" aria-describedby="site-music-track">
+    <span aria-hidden="true">♫</span>
+    <span data-music-action>播放音樂</span>
+  </button>
+  <span class="site-music-track" id="site-music-track">石溪搖籃曲 · Tako</span>
+</div>
+<script src="assets/music.js" defer></script>'''
+
 def footer():
     return f'''<footer class="site-footer"><div class="container footer-top"><a class="brand" href="index.html"><span class="brand-mark">RVZ<span>✦</span></span><span class="brand-name">Rea_Vix_Zead<small>遊戲、聊天，還有一起玩的你。</small></span></a>
     <div class="footer-links">{ext('twitch','Twitch')}{ext('youtube','YouTube')}{ext('linkgoods','LINKGOODS')}</div></div>
@@ -164,9 +176,11 @@ pages = {
 }
 def render_page(filename, title, description, body):
     extra_style = '<link rel="stylesheet" href="assets/social-grid.css">' if filename == 'social.html' else ''
+    music_style = MUSIC_STYLESHEET if filename != 'watch.html' else ''
+    music_player = MUSIC_PLAYER if filename != 'watch.html' else ''
     return f'''<!doctype html>
-<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#1b0c18"><meta name="description" content="{escape(description,quote=True)}"><title>{title}｜Rea_Vix_Zead 雷貝斯杰德</title><link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="canonical" href="{BASE+filename}"><meta property="og:type" content="website"><meta property="og:title" content="{title}｜Rea_Vix_Zead"><meta property="og:description" content="{escape(description,quote=True)}"><meta property="og:url" content="{BASE+filename}"><meta property="og:image" content="{BASE}assets/avatar.jpg"><link rel="stylesheet" href="assets/site.css?v=raven-2">{extra_style}</head>
-<body>{header(filename)}<main id="main">{body}</main>{footer()}</body></html>'''
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#1b0c18"><meta name="description" content="{escape(description,quote=True)}"><title>{title}｜Rea_Vix_Zead 雷貝斯杰德</title><link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="canonical" href="{BASE+filename}"><meta property="og:type" content="website"><meta property="og:title" content="{title}｜Rea_Vix_Zead"><meta property="og:description" content="{escape(description,quote=True)}"><meta property="og:url" content="{BASE+filename}"><meta property="og:image" content="{BASE}assets/avatar.jpg"><link rel="stylesheet" href="assets/site.css?v=raven-2">{extra_style}{music_style}</head>
+<body>{header(filename)}<main id="main">{body}</main>{footer()}{music_player}</body></html>'''
 
 def sitemap():
     urls = ''.join(f'<url><loc>{BASE}{name}</loc></url>' for name, _ in NAV)
