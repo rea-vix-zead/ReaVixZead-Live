@@ -108,26 +108,29 @@ SOCIAL_PREVIEWS = [
 def social_preview(key, name, handle, kind, embed, script):
     script_attr = f' data-script="{script}"' if script else ''
     return f'''
-    <details name="social-platform" class="social-preview"{script_attr}>
-      <summary><span class="social-platform-name">{name}</span><span class="social-handle">{handle}</span></summary>
-      <div class="social-panel">
-        <div class="social-panel-head"><p>{kind}</p>{ext(key, f'前往 {name}', 'text-link')}</div>
-        <p class="social-hint">預覽由 {name} 提供。若無法顯示，可用上方連結查看。</p>
-        <div class="social-embed"></div>
-        <template>{embed}</template>
-      </div>
-    </details>'''
+    <article class="social-preview"{script_attr}>
+      <header class="social-panel-head">
+        <div>
+          <h2 class="social-platform-name">{name}</h2>
+          <p class="social-handle">{handle}</p>
+        </div>
+        {ext(key, f'前往 {name}', 'text-link')}
+      </header>
+      <p class="social-kind">{kind}</p>
+      <div class="social-embed">{embed}</div>
+      <p class="social-hint">若預覽未顯示，可前往 {name} 查看。</p>
+    </article>'''
 
 social = page_head(
     'SOCIAL UPDATES', '社群<span>即時動態</span>',
-    '點開任一平台，在站內查看雷貝斯杰德的公開動態或精選貼文。'
+    '在這裡查看雷貝斯杰德的公開社群動態與精選貼文。'
 ) + f'''
 <section class="section container" aria-label="社群動態預覽">
   <div class="social-previews">
     {''.join(social_preview(*platform) for platform in SOCIAL_PREVIEWS)}
   </div>
 </section>
-<script src="assets/social.js" defer></script>
+<script src="assets/social-grid.js" defer></script>
 '''
 
 pages = {
@@ -138,7 +141,7 @@ pages = {
     'support.html': ('支持與合作','Twitch、第三方贊助、合作聯動與電子郵件聯絡方式。',support),
 }
 def render_page(filename, title, description, body):
-    extra_style = '<link rel="stylesheet" href="assets/social.css">' if filename == 'social.html' else ''
+    extra_style = '<link rel="stylesheet" href="assets/social-grid.css">' if filename == 'social.html' else ''
     return f'''<!doctype html>
 <html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#1b0c18"><meta name="description" content="{escape(description,quote=True)}"><title>{title}｜Rea_Vix_Zead 雷貝斯杰德</title><link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="canonical" href="{BASE+filename}"><meta property="og:type" content="website"><meta property="og:title" content="{title}｜Rea_Vix_Zead"><meta property="og:description" content="{escape(description,quote=True)}"><meta property="og:url" content="{BASE+filename}"><meta property="og:image" content="{BASE}assets/avatar.jpg"><link rel="stylesheet" href="assets/site.css?v=raven-2">{extra_style}</head>
 <body>{header(filename)}<main id="main">{body}</main>{footer()}</body></html>'''
