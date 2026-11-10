@@ -171,3 +171,13 @@ main > .section + .section { border-top: 1px solid var(--line); }
     opacity: .17;
   }
 }
+
+@media (any-hover: hover) and (any-pointer: fine) {
+  body {
+    cursor: url("raven-cursor.svg") 3 3, auto;
+  }
+
+  a[href], button:enabled, summary {
+    cursor: url("raven-cursor-link.svg") 3 3, pointer;
+  }
+}
