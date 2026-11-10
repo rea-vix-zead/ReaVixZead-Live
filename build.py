@@ -1,4 +1,4 @@
-"""Build the four static pages; no external dependencies required."""
+"""Build the generated static pages; no external dependencies required."""
 from pathlib import Path
 from html import escape
 import json
@@ -11,7 +11,7 @@ LINKS = {
     'discord': 'https://discord.gg/UBVjfp7vX5',
     'shared': 'https://discord.gg/FZmGSzxWY2',
     'linkgoods': 'https://linkgoods.com/reavixzead',
-    'instagram': 'https://www.instagram.com/rea_vix_zead/',
+    'instagram': 'https://www.instagram.com/rea_vix_zead/?hl=zh-tw',
     'threads': 'https://www.threads.com/@rea_vix_zead',
     'facebook': 'https://www.facebook.com/ReaVixZead/',
     'x': 'https://x.com/Rea_Vix_Ze_ad',
@@ -38,7 +38,7 @@ def ext(key, label, classes='', symbol='external'):
 def btn(href, label, secondary=False):
     return f'<a class="button {"button-secondary" if secondary else ""}" href="{href}">{label}{icon()}</a>'
 
-NAV = [('index.html','首頁'),('about.html','認識杰德'),('community.html','社群與投稿'),('support.html','支持與合作')]
+NAV = [('index.html','首頁'),('about.html','認識杰德'),('community.html','社群與投稿'),('social.html','社群即時動態'),('schedule.html','直播行程'),('watch.html','直播播放器'),('support.html','支持與合作')]
 def header(page):
     nav=''.join(f'<a href="{url}"'+(' aria-current="page"' if page==url else '')+f'>{name}</a>' for url,name in NAV)
     return f'''<a class="skip-link" href="#main">跳至主要內容</a>
@@ -90,18 +90,67 @@ support=f'''{page_head('THANKS FOR BEING HERE','有你在，<br><span>就是很�
 <section class="section container" id="contact"><div class="contact-box"><div><p class="eyebrow">LET’S MAKE SOMETHING FUN</p><h2>合作、聯動，<br>或一個有趣的點子。</h2><p>歡迎透過下方信箱聯絡。來信可簡單說明主題、合作內容、預計時間與方便回覆的方式。</p><a class="email-link" href="mailto:{EMAIL}">{EMAIL}</a><div class="hero-actions"><a class="button" href="mailto:{EMAIL}">寄信給我 {icon('mail')}</a><button class="button button-secondary" data-copy-email="{EMAIL}">複製信箱 {icon()}</button></div></div><div class="contact-decoration" aria-hidden="true">✦<span>LET’S<br>CONNECT.</span></div></div></section>
 <section class="section container"><div class="small-note"><h2>更多連結與推薦資訊</h2><p>其他平台、推薦與支持入口，集中整理在 LINKGOODS。</p>{ext('linkgoods','開啟完整個人名片','text-link')}</div></section>'''
 
+SOCIAL_PREVIEWS = [
+    ('x', 'X', '@Rea_Vix_Ze_ad', '公開置頂貼文',
+     '<blockquote class="twitter-tweet" data-theme="dark" data-dnt="true"><a href="https://twitter.com/Rea_Vix_Ze_ad/status/2000704320854221127">在 X 查看置頂貼文</a></blockquote>',
+     'https://platform.twitter.com/widgets.js'),
+    ('facebook', 'Facebook', 'Reavixzead雷貝斯杰德', '公開粉絲專頁預覽',
+     '<iframe title="雷貝斯杰德的 Facebook 粉絲專頁" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FReaVixZead%2F&amp;tabs=timeline&amp;width=360&amp;height=500&amp;small_header=true&amp;adapt_container_width=true" height="500"></iframe>',
+     ''),
+    ('instagram', 'Instagram', '@rea_vix_zead', '精選公開貼文',
+     '<iframe title="雷貝斯杰德的 Instagram 公開貼文" src="https://www.instagram.com/p/DZ-EKZwCUuu/embed/" height="530"></iframe>',
+     ''),
+    ('threads', 'Threads', '@rea_vix_zead', '精選公開貼文',
+     '<blockquote class="text-post-media" data-text-post-permalink="https://www.threads.com/@rea_vix_zead/post/Dclb_kRFG5H" data-text-post-version="0"><a href="https://www.threads.com/@rea_vix_zead/post/Dclb_kRFG5H">在 Threads 查看這則貼文</a></blockquote>',
+     'https://www.threads.com/embed.js'),
+]
+
+def social_preview(key, name, handle, kind, embed, script):
+    script_attr = f' data-script="{script}"' if script else ''
+    return f'''
+    <details name="social-platform" class="social-preview"{script_attr}>
+      <summary><span class="social-platform-name">{name}</span><span class="social-handle">{handle}</span></summary>
+      <div class="social-panel">
+        <div class="social-panel-head"><p>{kind}</p>{ext(key, f'前往 {name}', 'text-link')}</div>
+        <p class="social-hint">預覽由 {name} 提供。若無法顯示，可用上方連結查看。</p>
+        <div class="social-embed"></div>
+        <template>{embed}</template>
+      </div>
+    </details>'''
+
+social = page_head(
+    'SOCIAL UPDATES', '社群<span>即時動態</span>',
+    '點開任一平台，在站內查看雷貝斯杰德的公開動態或精選貼文。'
+) + f'''
+<section class="section container" aria-label="社群動態預覽">
+  <div class="social-previews">
+    {''.join(social_preview(*platform) for platform in SOCIAL_PREVIEWS)}
+  </div>
+</section>
+<script src="assets/social.js" defer></script>
+'''
+
 pages = {
     'index.html': ('直播個人網站','遊戲、聊天，還有一起玩的你。雷貝斯杰德 Rea_Vix_Zead 的 Twitch、社群與投稿入口。',home),
     'about.html': ('認識杰德','認識 VTuber 雷貝斯杰德，以及直播互動的小約定。',about),
     'community.html': ('社群與投稿','找到我的主要 Discord、與其他直播朋友共用的社群，以及故事投稿與其他平台入口。',community),
+    'social.html': ('社群即時動態','在站內查看雷貝斯杰德的 X、Facebook、Instagram 與 Threads 公開內容。',social),
     'support.html': ('支持與合作','Twitch、第三方贊助、合作聯動與電子郵件聯絡方式。',support),
 }
-for filename,(title,description,body) in pages.items():
-    page=f'''<!doctype html>
-<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#1b0c18"><meta name="description" content="{escape(description,quote=True)}"><title>{title}｜Rea_Vix_Zead 雷貝斯杰德</title><link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="canonical" href="{BASE+filename}"><meta property="og:type" content="website"><meta property="og:title" content="{title}｜Rea_Vix_Zead"><meta property="og:description" content="{escape(description,quote=True)}"><meta property="og:url" content="{BASE+filename}"><meta property="og:image" content="{BASE}assets/avatar.jpg"><link rel="stylesheet" href="assets/site.css?v=raven-2"></head>
+def render_page(filename, title, description, body):
+    extra_style = '<link rel="stylesheet" href="assets/social.css">' if filename == 'social.html' else ''
+    return f'''<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#1b0c18"><meta name="description" content="{escape(description,quote=True)}"><title>{title}｜Rea_Vix_Zead 雷貝斯杰德</title><link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="canonical" href="{BASE+filename}"><meta property="og:type" content="website"><meta property="og:title" content="{title}｜Rea_Vix_Zead"><meta property="og:description" content="{escape(description,quote=True)}"><meta property="og:url" content="{BASE+filename}"><meta property="og:image" content="{BASE}assets/avatar.jpg"><link rel="stylesheet" href="assets/site.css?v=raven-2">{extra_style}</head>
 <body>{header(filename)}<main id="main">{body}</main>{footer()}</body></html>'''
-    (ROOT/filename).write_text(page,encoding='utf-8')
-(ROOT/'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join(f'<url><loc>{BASE+name}</loc></url>' for name in pages)+'</urlset>',encoding='utf-8')
-(ROOT/'robots.txt').write_text(f'User-agent: *\nAllow: /\nSitemap: {BASE}sitemap.xml\n',encoding='utf-8')
-(ROOT/'.nojekyll').touch()
-print(f'Built {len(pages)} pages.')
+
+def sitemap():
+    urls = ''.join(f'<url><loc>{BASE}{name}</loc></url>' for name, _ in NAV)
+    return '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + urls + '</urlset>'
+
+if __name__ == '__main__':
+    for filename, (title, description, body) in pages.items():
+        (ROOT / filename).write_text(render_page(filename, title, description, body), encoding='utf-8')
+    (ROOT / 'sitemap.xml').write_text(sitemap(), encoding='utf-8')
+    (ROOT / 'robots.txt').write_text(f'User-agent: *\nAllow: /\nSitemap: {BASE}sitemap.xml\n', encoding='utf-8')
+    (ROOT / '.nojekyll').touch()
+    print(f'Built {len(pages)} pages.')
