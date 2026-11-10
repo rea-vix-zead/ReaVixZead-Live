@@ -1,0 +1,30 @@
+.site-music:not([hidden]) {
+  position: fixed;
+  bottom: max(12px, env(safe-area-inset-bottom));
+  right: max(12px, env(safe-area-inset-right));
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 12px 5px 5px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  box-shadow: 0 4px 20px #16091299;
+}
+
+.site-music .button {
+  gap: 6px;
+  min-height: 44px;
+  padding: 6px 10px;
+  font-size: .85rem;
+}
+
+.site-music-track {
+  font-size: .75rem;
+  color: var(--muted);
+}
+
+body:has(.site-music:not([hidden])) {
+  padding-bottom: calc(72px + env(safe-area-inset-bottom));
+}
