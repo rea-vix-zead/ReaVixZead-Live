@@ -60,6 +60,27 @@ def page_head(kicker, title, desc):
 def contact_strip():
     return f'<section class="section container"><div class="closing-strip"><div><p class="eyebrow">SEE YOU IN CHAT</p><h2>下一場，在聊天室見。</h2><p>開台時間不固定，追蹤 Twitch，接收開台通知。</p></div>{ext("twitch","去 Twitch 找我","button","play")}</div></section>'
 
+def highlight_section(kind):
+    title, description = {
+        'video': ('杰德精華', '第一支直播精華上架後，會放在這裡。'),
+        'playlist': ('杰德精華播放清單', '精華播放清單準備好後，就能在這裡接著看。'),
+    }[kind]
+    return f'''
+<section class="section container" id="highlights" aria-labelledby="highlights-title">
+  <div class="schedule-shell" data-youtube-highlight="{kind}">
+    <div class="embed-heading">
+      <div>
+        <p class="eyebrow">REA_VIX_ZEAD / YOUTUBE</p>
+        <h2 id="highlights-title">{title}</h2>
+        <p data-highlight-placeholder>{description}</p>
+      </div>
+      {ext('youtube', '前往 YouTube 頻道', 'text-link')}
+    </div>
+    <div class="twitch-frame" data-highlight-player hidden></div>
+  </div>
+</section>
+<script src="assets/highlights.js" defer></script>'''
+
 home=f'''
 <section class="hero container"><div class="hero-copy"><p class="eyebrow"><span class="tiny-star">✦</span> REA_VIX_ZEAD · GAMING VTUBER</p>
 <h1>一起玩，<br><span>就很好。</span></h1><p class="hero-name">雷貝斯杰德 <span>/ Rea_Vix_Zead</span></p>
@@ -70,6 +91,7 @@ home=f'''
 <img class="hero-portrait" src="assets/avatar.jpg" width="1484" height="1484" alt="Rea_Vix_Zead，黑髮紅眼的角色形象" fetchpriority="high">
 <span class="stage-star star-a" aria-hidden="true">✦</span><span class="stage-star star-b" aria-hidden="true">+</span><div class="stage-caption"><span>GAME. CHAT. CONNECT.</span><small>歡迎進入我的直播小宇宙</small></div></div></section>
 <section class="platform-rail container" aria-label="常用平台"><span class="rail-label">FIND ME HERE <span>↘</span></span>{ext('twitch','TWITCH','rail-link','play')}{ext('youtube','YOUTUBE','rail-link','play')}{ext('discord','DISCORD','rail-link','chat')}</section>
+{highlight_section('video')}
 <section class="section container"><div class="section-heading"><div><p class="eyebrow">GOOD GAMES, BETTER COMPANY</p><h2>不只看遊戲，<br>也一起創造好玩的時刻。</h2></div><a class="text-link" href="about.html">關於這個頻道 {icon()}</a></div>
 <div class="experience-grid"><article class="experience"><span class="section-number">01 / PLAY</span><h3>遊戲時間</h3><p>跟著我一起進入遊戲，看看這次會遇上什麼有趣的事情。</p></article><article class="experience"><span class="section-number">02 / TOGETHER</span><h3>一起玩才有趣</h3><p>喜歡和觀眾一起玩。能否一起加入，就依當次直播與遊戲安排。</p></article><article class="experience"><span class="section-number">03 / HANG OUT</span><h3>來坐坐、聊聊天</h3><p>不用想好話題，也不必每次都出聲。自在地看台，就是一種陪伴。</p></article></div></section>
 <section class="section container"><div class="community-feature"><div><p class="eyebrow">THE PARTY DOESN’T END HERE</p><h2>下播之後，<br><span>我們還能在這裡碰面。</span></h2><p>我的主要 Discord、與其他直播朋友共用的社群，還有留給故事與提問的入口。選一個你喜歡的方式，繼續這段連結。</p>{btn('community.html','找到你的社群入口')}</div><div class="chat-art" aria-hidden="true"><span class="chat-art-star">✦</span><div class="bubble bubble-a">有人要一起玩嗎？<small>GAME LOBBY / READY</small></div><div class="bubble bubble-b">來了，等我一下！<span>✧</span></div><div class="chat-art-label">GOOD COMPANY. GOOD TIMES.</div></div></div></section>
