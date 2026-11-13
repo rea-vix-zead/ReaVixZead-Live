@@ -1,7 +1,7 @@
-// Add the YouTube IDs here when the first highlight and playlist are ready.
+// Published highlights shown on the homepage and watch page.
 const highlightIds = {
-  video: '',
-  playlist: '',
+  video: 'IJ8tQnSIS8o',
+  playlist: 'PLDTGe-7_gr4g',
 };
 
 document.querySelectorAll('[data-youtube-highlight]').forEach(section => {
