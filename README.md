@@ -6,12 +6,16 @@
 - `about.html`：個人介紹與互動小約定。
 - `community.html`：主要 Discord、直播朋友共用社群、投稿入口與社群連結。
 - `support.html`：第三方支持方式與合作聯絡。
+- `social.html`：公開社群動態、精選貼文與標示日期的過往活動。
+- `schedule.html`：Google 日曆；手機顯示行程列表，電腦顯示月曆。
+- `watch.html`：Twitch 直播、YouTube 精華播放清單及 Shorts 入口。
 
 公開網站：https://rea-vix-zead.github.io/ReaVixZead-Live/
 
 ## 更新內容
 
-編輯 `build.py` 的文字和 `LINKS`，執行 `python build.py`，將產生的 HTML 一起提交。
+編輯 `templates/` 內對應的 HTML，執行 `python build.py`，將模板與產生的七個根目錄 HTML 一起提交。請勿只改根目錄的產生檔，以免下次建置覆蓋。
+精華影片與清單 ID 位於 `assets/highlights.js`；觀看入口位於首頁與播放器模板。背景音樂僅由訪客點擊播放，每次換頁保持靜音。
 樣式位於 `assets/site.css`，選單與複製信箱功能位於 `assets/site.js`。
 
 預覽：`python -m http.server 8767 --bind 127.0.0.1`。

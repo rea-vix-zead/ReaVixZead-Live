@@ -1,0 +1,10 @@
+.highlight-links { display:flex; flex-wrap:wrap; gap:12px 20px; }
+.archive-preview { margin:8px 0 12px; }
+.archive-preview summary { cursor:pointer; color:var(--purple); line-height:1.7; }
+.archive-preview[open] summary { margin-bottom:12px; }
+.social-date { color:var(--muted); font-size:.85rem; line-height:1.7; }
+@media(max-width:600px) {
+  .site-music-track { display:none; }
+  .site-music:not([hidden]) { padding-right:5px; }
+  .highlight-links { gap:12px; }
+}

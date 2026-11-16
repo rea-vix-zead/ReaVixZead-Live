@@ -11,13 +11,11 @@ try {
   // Playback still works when session storage is unavailable.
 }
 
-let optedOut = saved.paused === true;
 audio.volume = 0.25;
 
 function saveMusic() {
   try {
     sessionStorage.setItem(storageKey, JSON.stringify({
-      paused: optedOut,
       position: audio.currentTime || saved.position || 0,
     }));
   } catch {
@@ -44,15 +42,14 @@ audio.addEventListener('error', () => {
 });
 
 musicButton.addEventListener('click', () => {
-  optedOut = !audio.paused;
-  if (optedOut) {
-    audio.pause();
-  } else {
+  if (audio.paused) {
     playMusic();
+  } else {
+    audio.pause();
   }
   saveMusic();
 });
 
 window.addEventListener('pagehide', saveMusic);
 music.hidden = false;
-if (!optedOut) playMusic();
+// Every page starts silent. Playback requires the visitor's explicit click.
