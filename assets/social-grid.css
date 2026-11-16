@@ -25,6 +25,8 @@
 .social-kind { margin: 12px 0 8px; color: var(--purple); font-size: .9rem; }
 .social-embed {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  scrollbar-gutter: stable;
   justify-items: center;
   align-content: start;
   max-height: 460px;

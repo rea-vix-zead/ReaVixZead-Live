@@ -6,7 +6,7 @@
 - `about.html`：個人介紹與互動小約定。
 - `community.html`：主要 Discord、直播朋友共用社群、投稿入口與社群連結。
 - `support.html`：第三方支持方式與合作聯絡。
-- `social.html`：公開社群動態、精選貼文與標示日期的過往活動。
+- `social.html`：Facebook 公開動態與標示日期的 X、Instagram、Threads 固定貼文。
 - `schedule.html`：Google 日曆；手機顯示行程列表，電腦顯示月曆。
 - `watch.html`：Twitch 直播、YouTube 精華播放清單及 Shorts 入口。
 
@@ -30,3 +30,7 @@ GitHub Pages 使用 `main` 分支的根目錄。`.nojekyll` 保留靜態原始�
 投稿目前導向 LINKGOODS 原有表單入口，本站不收集投稿資料。
 主要 Discord：https://discord.gg/UBVjfp7vX5 。首頁的 Discord 入口統一指向此處。
 直播朋友共用社群：https://discord.gg/FZmGSzxWY2 ，可以和其他直播朋友聊天、交流與一起玩。
+
+## 社群預覽更新方式
+
+Facebook 使用官方 Page Plugin timeline，內容更新、顯示順序與延遲由 Facebook 控制。X、Instagram、Threads 為固定貼文，需在 `templates/social.html` 同步修改連結與貼文日期後重新建置；不會自動換成最新貼文。Meta 預覽延後到接近可視範圍時載入。
