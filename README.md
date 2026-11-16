@@ -15,7 +15,7 @@
 ## 更新內容
 
 編輯 `templates/` 內對應的 HTML，執行 `python build.py`，將模板與產生的七個根目錄 HTML 一起提交。請勿只改根目錄的產生檔，以免下次建置覆蓋。
-精華影片與清單 ID 位於 `assets/highlights.js`；觀看入口位於首頁與播放器模板。背景音樂僅由訪客點擊播放，每次換頁保持靜音。
+首頁與播放器共用 `assets/highlights.js` 的精華播放清單 ID；新片加入該 YouTube 清單後，兩頁會跟著清單更新，排序也以清單為準，不需再設定單支影片 ID。這不會自動上傳影片或把新片加入清單。觀看入口位於首頁與播放器模板。背景音樂僅由訪客點擊播放，每次換頁保持靜音。
 樣式位於 `assets/site.css`，選單與複製信箱功能位於 `assets/site.js`。
 
 預覽：`python -m http.server 8767 --bind 127.0.0.1`。

@@ -1,22 +1,13 @@
-// Published highlights shown on the homepage and watch page.
-const highlightIds = {
-  video: 'IJ8tQnSIS8o',
-  playlist: 'PLDTGe-7_gr4g',
-};
+// Both pages follow this playlist; add future videos to it on YouTube.
+const highlightPlaylistId = 'PLDTGe-7_gr4g';
 
 document.querySelectorAll('[data-youtube-highlight]').forEach(section => {
-  const kind = section.dataset.youtubeHighlight;
-  const id = highlightIds[kind];
-  if (!id) return;
-
-  const playlist = kind === 'playlist';
-  const embedPath = playlist
-    ? 'videoseries?list=' + encodeURIComponent(id)
-    : encodeURIComponent(id);
+  if (!highlightPlaylistId) return;
+  const embedPath = 'videoseries?list=' + encodeURIComponent(highlightPlaylistId);
 
   const player = document.createElement('iframe');
   player.src = 'https://www.youtube-nocookie.com/embed/' + embedPath;
-  player.title = playlist ? '杰德精華播放清單' : '杰德精華影片';
+  player.title = '杰德精華播放清單';
   player.loading = 'lazy';
   player.allowFullscreen = true;
   player.referrerPolicy = 'strict-origin-when-cross-origin';
