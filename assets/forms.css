@@ -1,0 +1,6 @@
+.form-guide { margin: 28px 0 0; max-width: 400px; }
+.form-guide img, .form-guide-demo img { width: 100%; height: auto; border: 1px solid var(--line); border-radius: 10px; }
+.form-guide figcaption, .form-guide-demo p { margin: 10px 0 0; color: var(--muted); font-size: .83rem; line-height: 1.7; }
+.form-guide-demo { margin-top: 16px; max-width: 400px; }
+.form-guide-demo summary { padding: 10px 14px; min-height: 44px; border: 1px solid var(--line); border-radius: 8px; color: var(--purple); cursor: pointer; }
+.form-guide-demo img { display: block; max-width: 320px; margin: 16px auto 0; }
