@@ -28,3 +28,16 @@
 body:has(.site-music:not([hidden])) {
   padding-bottom: calc(72px + env(safe-area-inset-bottom));
 }
+
+/* Keep mobile controls in the page flow so they never cover links. */
+@media (max-width: 600px) {
+  .site-music:not([hidden]) {
+    position: static;
+    width: fit-content;
+    max-width: calc(100% - 40px);
+    margin: 16px 20px 24px auto;
+  }
+  body:has(.site-music:not([hidden])) {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
